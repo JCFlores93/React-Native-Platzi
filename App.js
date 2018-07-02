@@ -15,11 +15,17 @@ import SuggestionList from './src/videos/containers/suggestion-list'
 import API from './utils/api'
 
 export default class App extends Component {
+	state = {
+		suggestionList: []
+	}
 	async componentDidMount() {
 		const movies = await API.getSuggestion(10)
 		console.log('====================================');
 		console.log(movies);
 		console.log('====================================');
+		this.setState({
+			suggestionList: movies
+		})
 	}
 	render() {
 		return (			
@@ -29,7 +35,9 @@ export default class App extends Component {
 				<Text>Header</Text>
 				<Text>Buscador</Text>
 				<Text>Categorías</Text>
-				<SuggestionList/>
+				<SuggestionList
+					list={this.state.suggestionList}
+				/>
 			</Home>
 		);
 	}
