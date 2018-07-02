@@ -13,7 +13,6 @@ const Separator = (props) => {
                 borderTopColor: (props.color) ? props.color : "red",
             }
             ]}>
-            <Text>Separador</Text>
         </View>
     )
 }

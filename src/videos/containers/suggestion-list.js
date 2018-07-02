@@ -6,10 +6,16 @@ import {
 import Layout from '../components/suggestion-list-layout'
 import Empty from '../components/empty'
 import Separator from '../components/vertical-separator'
+import Suggestion from '../components/suggestion'
 
 class SuggestionList extends Component {
     renderEmpty = ()=> <Empty text="No hay sugerenicas"/>
     itemSeparator = () => <Separator/>
+    renderItem = ({item}) => {
+        return(
+        <Suggestion {...item}/> 
+        )
+    }
     render() {
         const list = [
             {
@@ -27,9 +33,11 @@ class SuggestionList extends Component {
             >
                 <FlatList
                     data={list}
-                    renderItem={({ item }) => <Text>{item.title}</Text>}
-                    ItemSeparatorComponent={this.itemSeparator}
                     ListEmptyComponent={this.renderEmpty}
+                    ItemSeparatorComponent={this.itemSeparator}
+                    renderItem={this.renderItem}
+                    
+                    
                 />
             </Layout>
         )
