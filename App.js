@@ -12,8 +12,15 @@ import {
 import Home from './src/screens/containers/home'
 import Header from './src/screens/components/header';
 import SuggestionList from './src/videos/containers/suggestion-list'
+import API from './utils/api'
 
 export default class App extends Component {
+	async componentDidMount() {
+		const movies = await API.getSuggestion(10)
+		console.log('====================================');
+		console.log(movies);
+		console.log('====================================');
+	}
 	render() {
 		return (			
 			<Home>
