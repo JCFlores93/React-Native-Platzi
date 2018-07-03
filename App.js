@@ -41,14 +41,7 @@ export default class App extends Component {
 		return (
 			<Home>
 				<Header />
-				<View
-					style={{
-						flex: 1,
-						height: 100
-					}}
-				>
-					<Player/>
-				</View>
+				<Player />
 				<Text>Header</Text>
 				<Text>Buscador</Text>
 				<CategoryList

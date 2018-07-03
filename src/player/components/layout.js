@@ -15,11 +15,11 @@ const Layout = (props) => {
                 style={styles.overlay}
             >
                 {
-                    props.loading && 
+                    props.loading &&
                     props.loader
                 }
             </View>
-
+            {props.controls}
         </View>
     )
 }
