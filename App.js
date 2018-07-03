@@ -6,6 +6,7 @@
 
 import React, { Component } from 'react';
 import {
+	View,
 	Text
 } from 'react-native';
 
@@ -14,6 +15,8 @@ import Header from './src/screens/components/header';
 import SuggestionList from './src/videos/containers/suggestion-list'
 import CategoryList from './src/videos/containers/category-list'
 import API from './utils/api'
+import Player from './src/player/containers/player';
+
 
 export default class App extends Component {
 	state = {
@@ -35,10 +38,17 @@ export default class App extends Component {
 		})
 	}
 	render() {
-		return (			
+		return (
 			<Home>
-				
-				<Header/>
+				<Header />
+				<View
+					style={{
+						flex: 1,
+						height: 100
+					}}
+				>
+					<Player/>
+				</View>
 				<Text>Header</Text>
 				<Text>Buscador</Text>
 				<CategoryList
