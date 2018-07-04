@@ -3,38 +3,43 @@ import {
     View,
     Image,
     Text,
-    StyleSheet
+    StyleSheet,
+    TouchableOpacity
 } from 'react-native';
 const Suggestion = (props) => {
     return (
-        <View
-            style={styles.container}
+        <TouchableOpacity
+            onPress={props.onPress}
         >
             <View
-                style={styles.left}
+                style={styles.container}
             >
-                <Image
-                    style={styles.cover}
-                    source={{
-                        uri: props.medium_cover_image
-                    }}
-                />
                 <View
-                    style={styles.genre}
+                    style={styles.left}
                 >
-                    <Text
-                        style={styles.genreText}
-                    >{props.genres ? props.genres[0] : "*----*"}</Text>
+                    <Image
+                        style={styles.cover}
+                        source={{
+                            uri: props.medium_cover_image
+                        }}
+                    />
+                    <View
+                        style={styles.genre}
+                    >
+                        <Text
+                            style={styles.genreText}
+                        >{props.genres ? props.genres[0] : "*----*"}</Text>
+                    </View>
+                </View>
+                <View
+                    style={styles.right}
+                >
+                    <Text style={styles.title}>{props.title}</Text>
+                    <Text style={styles.year}>{props.year}</Text>
+                    <Text style={styles.rating}>{props.rating}</Text>
                 </View>
             </View>
-            <View
-                style={styles.right}
-            >
-                <Text style={styles.title}>{props.title}</Text>
-                <Text style={styles.year}>{props.year}</Text>
-                <Text style={styles.rating}>{props.rating}</Text>
-            </View>
-        </View>
+        </TouchableOpacity>
     )
 }
 
@@ -42,7 +47,7 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
     },
-    genre : {
+    genre: {
         position: 'absolute',
         left: 0,
         top: 0,
@@ -82,6 +87,6 @@ const styles = StyleSheet.create({
         fontSize: 14,
         fontWeight: 'bold',
     }
-    
+
 })
 export default Suggestion

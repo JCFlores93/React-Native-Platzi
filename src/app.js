@@ -8,10 +8,10 @@ import Header from './screens/components/header';
 import SuggestionList from './videos/containers/suggestion-list'
 import CategoryList from './videos/containers/category-list'
 import API from '../utils/api'
-import Player from './player/containers/player';
+import Movie from './screens/containers/movies'
 
 class AppLayout extends Component {
-//store viene con las propiedades
+    //store viene con las propiedades
     async componentDidMount() {
         const categoryList = await API.getMovies()
         this.props.dispatch({
@@ -29,10 +29,12 @@ class AppLayout extends Component {
         })
     }
     render() {
+        if (this.props.selectedMovie) {
+            return <Movie />
+        }
         return (
             <Home>
                 <Header />
-                <Player />
                 <Text>Header</Text>
                 <Text>Buscador</Text>
                 <CategoryList />
@@ -41,5 +43,9 @@ class AppLayout extends Component {
         )
     }
 }
-
-export default connect(null)(AppLayout)
+const mapStateToProps = (state) => {
+    return {
+        selectedMovie: state.selectedMovie
+    }
+}
+export default connect(mapStateToProps)(AppLayout)
