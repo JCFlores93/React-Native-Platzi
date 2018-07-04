@@ -17,7 +17,8 @@ import CategoryList from './src/videos/containers/category-list'
 import API from './utils/api'
 import Player from './src/player/containers/player';
 import { Provider } from 'react-redux'
-import store from './store'
+import { PersistGate } from 'redux-persist/integration/react'
+import { store, persistor } from './store'
 
 
 export default class App extends Component {
@@ -56,14 +57,19 @@ export default class App extends Component {
 			<Provider
 				store={store}
 			>
-				<Home>
-					<Header />
-					<Player />
-					<Text>Header</Text>
-					<Text>Buscador</Text>
-					<CategoryList/>
-					<SuggestionList/>
-				</Home>
+				<PersistGate
+					loading={<Text>cargando...</Text>}
+					persistor={persistor}
+				>
+					<Home>
+						<Header />
+						<Player />
+						<Text>Header</Text>
+						<Text>Buscador</Text>
+						<CategoryList />
+						<SuggestionList />
+					</Home>
+				</PersistGate>
 			</Provider>
 		);
 	}
