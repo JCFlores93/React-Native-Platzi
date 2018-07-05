@@ -3,14 +3,23 @@ import {
     TextInput,
     StyleSheet
 } from 'react-native';
-
+import API from '../../../utils/api';
+import { connect } from 'react-redux'
 
 class Search extends Component {
     state = {
         text: ''
     }
-    handleSubmit = () => {
+    handleSubmit = async () => {
         console.log(this.state.text)
+        const movies = await API.searchMovie(this.state.text)
+        console.log("movies " +movies)
+        this.props.dispatch({
+            type: 'SET_SELECTED_MOVIE',
+            payload: {
+                movie: movies[0]
+            }
+        })
     }
     handleChangeText = (text) => {
         this.setState({
@@ -27,6 +36,7 @@ class Search extends Component {
                 underlineColorAndroid="transparent"
                 onSubmitEditing={this.handleSubmit}
                 onChangeText={this.handleChangeText}
+                style={styles.input}
             />
         )
     }
@@ -41,4 +51,4 @@ const styles = StyleSheet.create({
     }
   })
 
-export default Search
+export default connect(null)(Search)
