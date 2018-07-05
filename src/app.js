@@ -9,6 +9,7 @@ import SuggestionList from './videos/containers/suggestion-list'
 import CategoryList from './videos/containers/category-list'
 import API from '../utils/api'
 import Movie from './screens/containers/movies'
+import Search from './sections/containers/search';
 
 class AppLayout extends Component {
     //store viene con las propiedades
@@ -35,8 +36,7 @@ class AppLayout extends Component {
         return (
             <Home>
                 <Header />
-                <Text>Header</Text>
-                <Text>Buscador</Text>
+                <Search/>
                 <CategoryList />
                 <SuggestionList />
             </Home>
